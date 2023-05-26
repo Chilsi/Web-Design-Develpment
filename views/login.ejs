@@ -1,0 +1,29 @@
+<%- include('layouts/header'); -%>
+
+    <%- include('layouts/nav'); -%>
+  <main>
+  <section class="w53">
+    <form class="loginf" name="myform" method="Post" action="" >
+      <label id="lbllog"> Login </label> <br>
+      <label id="lbl1" for="username">Username </label>
+      <input id="username" type="text" name="username">
+      <br/>
+
+      <label id="lbl1" for="password">Password </label>
+      <input id="password" type="password" name="password">
+
+      <br/><br/>
+      <input type="submit" value="Submit">
+      <p id="errors">
+        <%  if (typeof(error) != 'undefined')
+            {
+        %>
+                <%= error %>
+        <%
+            }
+        %>
+      </p>
+    </form>  
+</section>
+</main>
+<%- include('layouts/footer'); -%>

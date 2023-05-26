@@ -1,0 +1,105 @@
+<%- include('layouts/header'); -%>
+
+  <%- include('layouts/nav'); -%>
+  <main>
+    <h2>Order Any Juice!</h2>
+     <div class="cards">
+       <article class="toy">
+           <h3>Mango Juice</h3>
+           <p>Price: $6.99</p>
+           <img src="images/mango.jpg" alt="Mango">
+       </article>
+       <article class="toy">
+           <h3>Berry Juice</h3>
+           <p>Price: $5.99</p>
+           <img src="images/berry.jpg" alt="Berry">
+       </article>
+       <article class="toy">
+           <h3>Apple Juice</h3>
+           <p>Price: $3.99</p>
+           <img src="images/apple.jpg" alt="Apple">
+       </article>
+     </div>
+   </main>
+ <section class="w50">
+  <form name="myform" method="Post" onsubmit="return formSubmit();"  action="" >
+     <h2 class="sd">ORDER DETAILS</h2>
+     <label>StudentId</label>
+      <input id="studentid" placeholder="123-1234" type="text" name="studentid"><br/>
+
+      <label>StudentName</label>
+      <input id="studentname" placeholder="First Last" type="text" name="studentname"><br/>
+     
+     <label>Please Add</label><br/>
+     <label>Mango Juice</label>
+     <input class="inputs" id="mjuice" placeholder="00" type="text" min="0" name="mjuice"> <br/>
+
+     <label>Berry Juice</label>
+     <input class="inputs" id="bjuice" placeholder="00" type="text" name="bjuice"> <br/>
+
+     <label>Apple Juice</label>
+     <input class="inputs" id="ajuice" placeholder="00" type="text" name="ajuice"> <br/>
+     <br/>
+     <input type="submit" value="Submit">
+   </form>  
+ </section>
+ <section class="w51">
+   <div class="formData">
+   <% 
+     if (typeof(errors) != 'undefined')
+     {
+       for (let error of errors)
+       {
+   %>
+         <p class="errors"> <%= error.msg %></p>
+   <%
+       }
+     }
+   %>
+
+   <% 
+     if(typeof(total) != 'undefined')
+     {
+   %>
+       <p class="para" id="formResult">Your Receipt</p>
+   <table>            
+    <tr>
+      <th>StudentId:</th>
+      <td> <%= studentid %> </td>
+    </tr>
+    <tr>
+      <th>StudentName:</th>
+      <td> <%= studentname %> </td>
+    </tr>
+     <tr>
+       <th>Mango Juice</th>
+       <td> <%= mjuice %> </td>
+     </tr>
+     <tr>
+       <th>Berry Juice</th>
+       <td> <%= bjuice %> </td>
+     </tr>
+     <tr>
+       <th>Apple Juice</th>
+       <td> <%= ajuice %> </td>
+     </tr>
+     <tr>
+       <th>Sub Total</th>
+       <td>$<%= subTotal.toFixed(2) %> </td>
+     </tr>
+   
+     <tr>
+       <th>Tax</th>
+       <td> $<%= tax.toFixed(2) %> </td>
+     </tr>
+     <tr>
+       <th id="tot">Total</th>
+       <td id="tot"> $<%= total.toFixed(2) %> </td>
+     </tr>
+   </table>
+   <%
+     }
+   %>
+ </div>
+</section>
+<%- include('layouts/footer'); -%>
